@@ -8,9 +8,9 @@
   :java-source-paths ["src/java"]
   :test-paths ["test", "target/test-classes"]
   :auto-clean false
-  :dependencies [[riddley "0.1.12"]]
+  :dependencies [[riddley "0.2.0"]]
   :plugins [[lein-codox "0.10.7"]
-            [lein-doo "0.1.7"]]
+            [lein-doo "0.1.11"]]
   :codox {:source-paths ["target/classes" "src/clj"]
           :namespaces [com.rpl.specter
                        com.rpl.specter.zipper
@@ -29,12 +29,14 @@
                                    :optimizations :none}}]}
 
   :profiles {:dev {:dependencies
-                   [[org.clojure/test.check "0.9.0"]
-                    [org.clojure/clojure "1.9.0"]
-                    [org.clojure/clojurescript "1.10.439"]]}
-             :bench {:dependencies [[org.clojure/clojure "1.9.0"]
-                                    [criterium "0.4.4"]]}
-             :test {:dependencies [[org.clojure/clojure "1.7.0"]]}}
+                   [[org.clojure/test.check "1.1.0" :exclusions [org.clojure/clojure]]
+                    [org.clojure/clojure "1.10.2"]
+                    [org.clojure/clojurescript "1.10.764" :exclusions [org.clojure/clojure]]]}
+             :bench {:dependencies [[org.clojure/clojure "1.10.2"]
+                                    [criterium "0.4.6"]]}
+             :1.7 {:dependencies [[org.clojure/clojure "1.7.0"]]}
+             :1.8 {:dependencies [[org.clojure/clojure "1.8.0"]]
+             :1.9 {:dependencies [[org.clojure/clojure "1.9.0"]]}}}
 
    :deploy-repositories
          [["clojars" {:url "https://repo.clojars.org"
